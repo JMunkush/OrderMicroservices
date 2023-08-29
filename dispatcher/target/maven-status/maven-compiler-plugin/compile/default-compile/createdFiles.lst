@@ -1,0 +1,5 @@
+io\munkush\app\service\AnswerConsumeService.class
+io\munkush\app\service\OrderProducerService.class
+io\munkush\app\configuration\RabbitMQConfiguration.class
+io\munkush\app\controller\OrderController.class
+io\munkush\app\DispatcherMainClass.class
