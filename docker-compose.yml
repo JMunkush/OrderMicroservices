@@ -2,14 +2,17 @@ version: '3'
 
 services:
   rabbitmq :
+    networks:
+      - mynetwork
     image: rabbitmq:management
-    ports:
-      - "5672:5672"
-      - "15672:15672"
     environment:
       RABBITMQ_DEFAULT_USER: "user"
       RABBITMQ_DEFAULT_PASS: "pass"
+    ports:
+      - "15672:15672"
   node:
+    networks:
+      - mynetwork
     image: node-app
     build:
       context: ./node
@@ -20,6 +23,8 @@ services:
       SPRING_RABBITMQ_PASSWORD: pass
 
   dispatcher:
+    networks:
+      - mynetwork
     ports:
       - "8080:8080"
     image: dispatcher-app
@@ -31,5 +36,6 @@ services:
       SPRING_RABBITMQ_USERNAME: user
       SPRING_RABBITMQ_PASSWORD: pass
 
-
+networks:
+  mynetwork:
 
